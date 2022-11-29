@@ -1,6 +1,7 @@
 package fr.ziriskeep.events;
 
 import fr.ziriskeep.Main;
+import fr.ziriskeep.utils.ColorsUtil;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -57,15 +58,18 @@ public class DeathEvents implements Listener {
 
     private boolean hasSpecialSword(Inventory inv){
         return Arrays.stream(inv.getContents()).anyMatch(it-> it != null && it.hasItemMeta() && it.getItemMeta()
-                .getDisplayName().equals(instance.getConfig().get("epee.Name")));
+                .getDisplayName()
+                .equals(ColorsUtil.translate.apply(instance.getConfig().getString("epee.Name"))));
     }
     private boolean hasSpacialBow(Inventory inv){
         return Arrays.stream(inv.getContents()).anyMatch(it->it != null && it.hasItemMeta() && it.getItemMeta()
-                .getDisplayName().equals(instance.getConfig().get("arc.Name")));
+                .getDisplayName()
+                .equals(ColorsUtil.translate.apply(instance.getConfig().getString("arc.Name"))));
     }
     private boolean hasSpecialRod(Inventory inv){
         return Arrays.stream(inv.getContents()).anyMatch(it->it != null && it.hasItemMeta() && it.getItemMeta()
-                .getDisplayName().equals(instance.getConfig().get("rod.Name")));
+                .getDisplayName()
+                .equals(ColorsUtil.translate.apply(instance.getConfig().getString("rod.Name"))));
     }
 
     private boolean hasSpecialItem(Inventory inv){
@@ -75,16 +79,22 @@ public class DeathEvents implements Listener {
 
     private List<ItemStack> getSpecialSwords(Inventory inv){
         return Arrays.stream(inv.getContents()).filter(it->it != null && it.hasItemMeta() && it.getItemMeta()
-                .getDisplayName().equals(instance.getConfig().get("epee.Name"))).collect(Collectors.toList());
+                .getDisplayName()
+                .equals(ColorsUtil.translate.apply(instance.getConfig().getString("epee.Name"))))
+                .collect(Collectors.toList());
 
     }
     private List<ItemStack> getSpecialBows(Inventory inv){
         return Arrays.stream(inv.getContents()).filter(it-> it != null && it.hasItemMeta() && it.getItemMeta()
-                .getDisplayName().equals(instance.getConfig().get("arc.Name"))).collect(Collectors.toList());
+                .getDisplayName()
+                .equals(ColorsUtil.translate.apply(instance.getConfig().getString("arc.Name"))))
+                .collect(Collectors.toList());
     }
     private List<ItemStack> getSpecialRods(Inventory inv){
         return Arrays.stream(inv.getContents()).filter(it->it != null && it.hasItemMeta() && it.getItemMeta()
-                .getDisplayName().equals(instance.getConfig().get("rod.Name"))).collect(Collectors.toList());
+                .getDisplayName()
+                .equals(ColorsUtil.translate.apply(instance.getConfig().getString("rod.Name"))))
+                .collect(Collectors.toList());
 
     }
 
